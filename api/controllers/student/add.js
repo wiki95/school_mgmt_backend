@@ -6,6 +6,11 @@ const moment = require("moment");
 const ADD = async (req, res, next) => {
 	if (req.isAuth === true) {
 		try {
+			const grnum = await Student.findOne({ gr_num: req.body.gr_num });
+			const nic = await Student.findOne({ nic: req.body.nic });
+			if (grnum || nic) {
+				return res.status(409).json({ message: "duplicate grnum or nic" });
+			}
 			const password = await bcrypt.hash(req.body.password, 10);
 			if (password) {
 				const student = new Student({
@@ -36,6 +41,7 @@ const ADD = async (req, res, next) => {
 							class: record.class,
 							section: record.section,
 							address: record.address,
+							nic: record.nic,
 							admission_date: record.admission_date
 						}
 					});

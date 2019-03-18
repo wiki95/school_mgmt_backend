@@ -13,7 +13,7 @@ const studentSchema = new schema({
 	section: { type: String, required: true },
 	address: { type: String, required: true },
 	admission_date: { type: Date, required: true },
-	nic: { type: String, required: true },
+	nic: { type: String, required: true, unique: true },
 	password: { type: String, required: true }
 });
 

@@ -3,12 +3,16 @@ const router = express.Router();
 
 const ADD_STUDENT = require("../controllers/student/add");
 const {
-	FETCH_SELECTED_STUDENTS,
+	//FETCH_SELECTED_STUDENTS,
 	FETCH_STUDENTS
 } = require("../controllers/student/fetch");
+const DELETE_STUDENT = require("../controllers/student/delete");
+const UDPATE_STUDENT = require("../controllers/student/update");
 
 router.get("/", FETCH_STUDENTS);
-router.get("/:key/:value", FETCH_SELECTED_STUDENTS);
-router.post("/add", ADD_STUDENT);
+//router.get("/:key/:value", FETCH_SELECTED_STUDENTS);
+router.post("/", ADD_STUDENT);
+router.delete("/", DELETE_STUDENT);
+router.put("/", UDPATE_STUDENT);
 
 module.exports = router;

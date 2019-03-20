@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const auth = require("./api/routes/auth");
 const student = require("./api/routes/student");
 const teacher = require("./api/routes/teacher");
+const schedule = require("./api/routes/schedule");
 const isAuth = require("./api/middleware/is-auth");
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(isAuth);
 app.use("/auth", auth);
 app.use("/student", student);
 app.use("/teacher", teacher);
+app.use("/schedule", schedule);
 
 ////////////--------------Error if no routes found -----------///////////////
 app.use((req, res, next) => {

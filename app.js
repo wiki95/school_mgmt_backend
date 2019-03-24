@@ -8,6 +8,7 @@ const auth = require("./api/routes/auth");
 const student = require("./api/routes/student");
 const teacher = require("./api/routes/teacher");
 const schedule = require("./api/routes/schedule");
+const notice = require("./api/routes/notice");
 const isAuth = require("./api/middleware/is-auth");
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/auth", auth);
 app.use("/student", student);
 app.use("/teacher", teacher);
 app.use("/schedule", schedule);
+app.use("/notice", notice);
 
 ////////////--------------Error if no routes found -----------///////////////
 app.use((req, res, next) => {

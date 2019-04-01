@@ -10,7 +10,7 @@ const STUDENT_LOGIN = async (req, res, next) => {
 			const isEqual = await bcrypt.compare(req.body.password, student.password);
 			if (isEqual) {
 				const token = jwt.sign(
-					{ studentId: student.id, nic: user.nic },
+					{ studentId: student.id, nic: student.nic },
 					process.env.TOKEN_KEY,
 					{
 						expiresIn: "1h"
@@ -44,6 +44,7 @@ const STUDENT_LOGIN = async (req, res, next) => {
 			});
 		}
 	} catch (err) {
+		console.log(err);
 		res.status(404).json({
 			error: err,
 			message: err.message
